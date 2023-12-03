@@ -3,7 +3,30 @@ const peer = new RTCPeerConnection({
   iceServers: [
     {
       urls: "stun:stun.stunprotocol.org"
-    }
+    },
+    {
+      urls: "stun:stun.relay.metered.ca:80",
+  },
+  {
+      urls: "turn:a.relay.metered.ca:80",
+      username: "a5438070f98de1786441a350",
+      credential: "G7x6io6w9wcc/AU6",
+  },
+  {
+      urls: "turn:a.relay.metered.ca:80?transport=tcp",
+      username: "a5438070f98de1786441a350",
+      credential: "G7x6io6w9wcc/AU6",
+  },
+  {
+      urls: "turn:a.relay.metered.ca:443",
+      username: "a5438070f98de1786441a350",
+      credential: "G7x6io6w9wcc/AU6",
+  },
+  {
+      urls: "turn:a.relay.metered.ca:443?transport=tcp",
+      username: "a5438070f98de1786441a350",
+      credential: "G7x6io6w9wcc/AU6",
+  }
   ]
 });
 
