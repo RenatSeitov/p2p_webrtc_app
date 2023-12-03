@@ -5,7 +5,7 @@ from starlette.responses import FileResponse
 from starlette.staticfiles import StaticFiles
 
 app = FastAPI()
-app.mount("/static", StaticFiles(directory="../public"), name="static")
+app.mount("/static", StaticFiles(directory="./public"), name="static")
 socket_manager = SocketManager(app=app, mount_location="/ws")
 
 # Словарь для хранения статуса подключения пользователей
@@ -65,4 +65,4 @@ async def ice_candidate(sid, data):
 @app.get("/")
 def read_root():
     """Отображение главной страницы."""
-    return FileResponse("../public/index.html")
+    return FileResponse("./public/index.html")
