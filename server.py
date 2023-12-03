@@ -11,12 +11,38 @@ socket_manager = SocketManager(app=app, mount_location="/ws")
 # Словарь для хранения статуса подключения пользователей
 connected_users = {}
 
+ice_servers = [
+    {
+        "urls": "stun:stun.relay.metered.ca:80",
+    },
+    {
+        "urls": "turn:a.relay.metered.ca:80",
+        "username": "a5438070f98de1786441a350",
+        "credential": "G7x6io6w9wcc/AU6",
+    },
+    {
+        "urls": "turn:a.relay.metered.ca:80?transport=tcp",
+        "username": "a5438070f98de1786441a350",
+        "credential": "G7x6io6w9wcc/AU6",
+    },
+    {
+        "urls": "turn:a.relay.metered.ca:443",
+        "username": "a5438070f98de1786441a350",
+        "credential": "G7x6io6w9wcc/AU6",
+    },
+    {
+        "urls": "turn:a.relay.metered.ca:443?transport=tcp",
+        "username": "a5438070f98de1786441a350",
+        "credential": "G7x6io6w9wcc/AU6",
+    },
+]
 
 @app.sio.on("connect")
 async def connect(sid, environ):
     """Обработка подключения нового пользователя."""
     connected_users[sid] = {"connected": True}
     await app.sio.emit("update-user-list", {"userIds": list(connected_users.keys())})
+    await app.sio.emit("iceServers", ice_servers, room=sid)  # Отправляем серверы ICE новому пользователю
     logger.info(f"User {sid} connected")
 
 
