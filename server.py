@@ -37,6 +37,7 @@ ice_servers = [
     },
 ]
 
+
 @app.sio.on("connect")
 async def connect(sid, environ):
     """Обработка подключения нового пользователя."""
