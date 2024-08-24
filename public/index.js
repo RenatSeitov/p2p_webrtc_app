@@ -2,36 +2,20 @@
 const peer = new RTCPeerConnection({
   iceServers: [
     {
-      urls: "stun:stun.stunprotocol.org"
+      "urls": "stun.nutrisha.live",
+      "username": "rseitov",
+      "credential": "Server1"
     },
     {
-      urls: "stun:stun.relay.metered.ca:80",
-  },
-  {
-      urls: "turn:a.relay.metered.ca:80",
-      username: "a5438070f98de1786441a350",
-      credential: "G7x6io6w9wcc/AU6",
-  },
-  {
-      urls: "turn:a.relay.metered.ca:80?transport=tcp",
-      username: "a5438070f98de1786441a350",
-      credential: "G7x6io6w9wcc/AU6",
-  },
-  {
-      urls: "turn:a.relay.metered.ca:443",
-      username: "a5438070f98de1786441a350",
-      credential: "G7x6io6w9wcc/AU6",
-  },
-  {
-      urls: "turn:a.relay.metered.ca:443?transport=tcp",
-      username: "a5438070f98de1786441a350",
-      credential: "G7x6io6w9wcc/AU6",
-  }
+      "urls": "turn.nutrisha.live",
+      "username": "rseitov",
+      "credential": "Server1"
+    }
   ]
 });
 
 // Connecting to socket (custom path for FastAPI
-const socket = io({path: '/ws/socket.io'});
+const socket = io({ path: '/ws/socket.io' });
 
 const onSocketConnected = async () => {
   const constraints = {
@@ -49,7 +33,7 @@ let callButton = document.querySelector('#call');
 callButton.addEventListener('click', async () => {
   const localPeerOffer = await peer.createOffer();
   await peer.setLocalDescription(new RTCSessionDescription(localPeerOffer));
-  
+
   sendMediaOffer(localPeerOffer);
 });
 
@@ -116,7 +100,7 @@ const onUpdateUserList = ({ userIds }) => {
   const usersToDisplay = userIds.filter(id => id !== socket.id);
 
   usersList.innerHTML = '';
-  
+
   usersToDisplay.forEach(user => {
     const userItem = document.createElement('div');
     userItem.innerHTML = user;
