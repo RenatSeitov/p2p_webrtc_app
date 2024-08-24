@@ -4,9 +4,26 @@ const peer = new RTCPeerConnection({
     {
       urls: "stun:stun.nutrisha.live"
     },
-
     {
-      urls: "turn:turn.nutrisha.live",
+      urls: "stun:stun.nutrisha.live:80",
+    },
+    {
+      urls: "turn:turn.nutrisha.live:80",
+      username: "rseitov",
+      credential: "Server1",
+    },
+    {
+      urls: "turn:turn.nutrisha.live:80?transport=tcp",
+      username: "rseitov",
+      credential: "Server1",
+    },
+    {
+      urls: "turn:turn.nutrisha.live:443",
+      username: "rseitov",
+      credential: "Server1",
+    },
+    {
+      urls: "turn:turn.nutrisha.live:443?transport=tcp",
       username: "rseitov",
       credential: "Server1",
     }
