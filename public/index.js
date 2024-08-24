@@ -2,14 +2,13 @@
 const peer = new RTCPeerConnection({
   iceServers: [
     {
-      "urls": "stun.nutrisha.live",
-      "username": "rseitov",
-      "credential": "Server1"
+      urls: "stun.nutrisha.live",
+
     },
     {
-      "urls": "turn.nutrisha.live",
-      "username": "rseitov",
-      "credential": "Server1"
+      urls: "turn.nutrisha.live",
+      username: "rseitov",
+      credential: "Server1"
     }
   ]
 });
