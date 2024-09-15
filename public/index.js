@@ -5,7 +5,7 @@ const peer = new RTCPeerConnection({
       urls: "stun:stun.nutrisha.live"
     },
     {
-      urls: "stun:stun.nutrisha.live:80",
+      urls: "stun:stun.nutrisha.live:3478",
     },
     {
       urls: "turn:turn.nutrisha.live:80",
